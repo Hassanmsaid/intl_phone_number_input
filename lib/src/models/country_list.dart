@@ -44,6 +44,36 @@ class Countries {
 
   static List<Map<String, dynamic>> _countryList = [
     {
+      "num_code": "818",
+      "alpha_2_code": "EG",
+      "alpha_3_code": "EGY",
+      "en_short_name": "Egypt",
+      "nationality": "Egypt",
+      "dial_code": "+20",
+      "nameTranslations": {
+        "sk": "Egypt",
+        "se": "Egypt",
+        "pl": "Egipt",
+        "no": "Egypt",
+        "ja": "エジプト",
+        "it": "Egitto",
+        "zh": "埃及",
+        "nl": "Egypt",
+        "de": "Ägypt",
+        "fr": "Égypte",
+        "es": "Egipt",
+        "en": "Egypt",
+        "pt_BR": "Egito",
+        "sr-Cyrl": "Египат",
+        "sr-Latn": "Egipat",
+        "zh_TW": "埃及",
+        "tr": "Mısır",
+        "ro": "Egipt",
+        "ar": "مصر",
+        "fa": "مصر"
+      }
+    },
+    {
       "num_code": "4",
       "alpha_2_code": "AF",
       "alpha_3_code": "AFG",
@@ -1931,36 +1961,6 @@ class Countries {
         "ro": "Ecuador",
         "ar": "الإكوادور",
         "fa": "اكوادور"
-      }
-    },
-    {
-      "num_code": "818",
-      "alpha_2_code": "EG",
-      "alpha_3_code": "EGY",
-      "en_short_name": "Egypt",
-      "nationality": "Egypt",
-      "dial_code": "+20",
-      "nameTranslations": {
-        "sk": "Egypt",
-        "se": "Egypt",
-        "pl": "Egipt",
-        "no": "Egypt",
-        "ja": "エジプト",
-        "it": "Egitto",
-        "zh": "埃及",
-        "nl": "Egypt",
-        "de": "Ägypt",
-        "fr": "Égypte",
-        "es": "Egipt",
-        "en": "Egypt",
-        "pt_BR": "Egito",
-        "sr-Cyrl": "Египат",
-        "sr-Latn": "Egipat",
-        "zh_TW": "埃及",
-        "tr": "Mısır",
-        "ro": "Egipt",
-        "ar": "مصر",
-        "fa": "مصر"
       }
     },
     {
@@ -4869,7 +4869,7 @@ class Countries {
         "zh_TW": "紐埃",
         "tr": "Niue",
         "ro": "Niue",
-        "ar": "نييوي", 
+        "ar": "نييوي",
         "fa": "نیووی"
       }
     },
@@ -5709,7 +5709,7 @@ class Countries {
         "zh_TW": "聖文森及格瑞那丁",
         "tr": "Saint Vincent ve Grenadinler",
         "ro": "Sfântul Vincențiu și Grenadinele",
-        "ar": "سانت فينسنت والغرينادين", 
+        "ar": "سانت فينسنت والغرينادين",
         "fa": "سنت وینسنت و گرنادین‌ها"
       }
     },
@@ -6759,7 +6759,7 @@ class Countries {
         "zh_TW": "突尼西亞",
         "tr": "Tunus",
         "ro": "Tunisia",
-        "ar": "تونس", 
+        "ar": "تونس",
         "fa": "تونس"
       }
     },
@@ -7059,7 +7059,7 @@ class Countries {
         "zh_TW": "烏拉圭",
         "tr": "Uruguay",
         "ro": "Uruguay",
-        "ar": "الأوروغواي", 
+        "ar": "الأوروغواي",
         "fa": "اروگوئه"
       }
     },
