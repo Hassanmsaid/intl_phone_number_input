@@ -74,6 +74,36 @@ class Countries {
       }
     },
     {
+      "num_code": "840",
+      "alpha_2_code": "US",
+      "alpha_3_code": "USA",
+      "en_short_name": "United States of America",
+      "nationality": "American",
+      "dial_code": "+1",
+      "nameTranslations": {
+        "sk": "Spojené štáty",
+        "se": "Amerihká ovttastuvvan stáhtat",
+        "pl": "Stany Zjednoczone",
+        "no": "USA",
+        "ja": "アメリカ合衆国",
+        "it": "Stati Uniti",
+        "zh": "美国",
+        "nl": "Verenigde Staten",
+        "de": "Vereinigte Staaten",
+        "fr": "États-Unis",
+        "es": "Estados Unidos",
+        "en": "United States",
+        "pt_BR": "Estados Unidos",
+        "sr-Cyrl": "Сједињене Америчке Државе",
+        "sr-Latn": "Sjedinjene Američke Države",
+        "zh_TW": "美國",
+        "tr": "Amerika Birleşik Devletleri",
+        "ro": "Statele Unite ale Americii",
+        "ar": "الولايات المتحدة",
+        "fa": "ایالات متحده آمریکا"
+      }
+    },
+    {
       "num_code": "4",
       "alpha_2_code": "AF",
       "alpha_3_code": "AFG",
@@ -7001,36 +7031,6 @@ class Countries {
         "ro": "Regatul Unit al Marii Britanii și Irlandei de Nord",
         "ar": "المملكة المتحدة",
         "fa": "بریتانیا"
-      }
-    },
-    {
-      "num_code": "840",
-      "alpha_2_code": "US",
-      "alpha_3_code": "USA",
-      "en_short_name": "United States of America",
-      "nationality": "American",
-      "dial_code": "+1",
-      "nameTranslations": {
-        "sk": "Spojené štáty",
-        "se": "Amerihká ovttastuvvan stáhtat",
-        "pl": "Stany Zjednoczone",
-        "no": "USA",
-        "ja": "アメリカ合衆国",
-        "it": "Stati Uniti",
-        "zh": "美国",
-        "nl": "Verenigde Staten",
-        "de": "Vereinigte Staaten",
-        "fr": "États-Unis",
-        "es": "Estados Unidos",
-        "en": "United States",
-        "pt_BR": "Estados Unidos",
-        "sr-Cyrl": "Сједињене Америчке Државе",
-        "sr-Latn": "Sjedinjene Američke Države",
-        "zh_TW": "美國",
-        "tr": "Amerika Birleşik Devletleri",
-        "ro": "Statele Unite ale Americii",
-        "ar": "الولايات المتحدة",
-        "fa": "ایالات متحده آمریکا"
       }
     },
     {
