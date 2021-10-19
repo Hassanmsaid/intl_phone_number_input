@@ -397,7 +397,7 @@ class _InputWidgetView extends WidgetView<InternationalPhoneNumberInput, _InputW
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         if (!widget.selectorConfig.setSelectorButtonAsPrefixIcon) ...[
           Column(
