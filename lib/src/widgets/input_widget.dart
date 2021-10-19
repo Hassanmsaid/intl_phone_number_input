@@ -76,7 +76,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
   final InputBorder? inputBorder;
   final InputDecoration? inputDecoration;
   final InputDecoration? searchBoxDecoration;
-  final BoxDecoration? decoration;
+  final BoxDecoration? selectorDecoration;
   final Color? cursorColor;
   final TextAlign textAlign;
   final TextAlignVertical textAlignVertical;
@@ -120,7 +120,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
     this.inputBorder,
     this.inputDecoration,
     this.searchBoxDecoration,
-    this.decoration,
+    this.selectorDecoration,
     this.textAlign = TextAlign.start,
     this.textAlignVertical = TextAlignVertical.center,
     this.scrollPadding = const EdgeInsets.all(20.0),
@@ -311,7 +311,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
           autoFocusSearchField: widget.autoFocusSearch,
           isScrollControlled: widget.countrySelectorScrollControlled,
           showSelectorIcon: widget.showSelectorIcon,
-          decoration: widget.decoration,
+          selectorDecoration: widget.selectorDecoration,
           selectorHeight: widget.selectorHeight,
           selectorPadding: widget.selectorPadding,
         ),
@@ -415,7 +415,7 @@ class _InputWidgetView extends WidgetView<InternationalPhoneNumberInput, _InputW
                 autoFocusSearchField: widget.autoFocusSearch,
                 isScrollControlled: widget.countrySelectorScrollControlled,
                 showSelectorIcon: widget.showSelectorIcon,
-                decoration: widget.decoration,
+                selectorDecoration: widget.selectorDecoration,
                 selectorHeight: widget.selectorHeight,
                 selectorPadding: widget.selectorPadding,
               ),

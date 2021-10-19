@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(10),
               child: InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) {
                   print(number.phoneNumber);
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 selectorConfig: SelectorConfig(
                   selectorType: PhoneInputSelectorType.DIALOG,
                 ),
-                decoration: BoxDecoration(
+                selectorDecoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
                   border: Border.all(
                     color: Colors.grey,

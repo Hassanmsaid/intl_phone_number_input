@@ -19,7 +19,7 @@ class SelectorButton extends StatelessWidget {
   final bool isScrollControlled;
 
   final bool showSelectorIcon;
-  final BoxDecoration? decoration;
+  final BoxDecoration? selectorDecoration;
   final double selectorHeight;
   final double selectorPadding;
 
@@ -38,7 +38,7 @@ class SelectorButton extends StatelessWidget {
     required this.isEnabled,
     required this.isScrollControlled,
     this.showSelectorIcon = false,
-    this.decoration,
+    this.selectorDecoration,
     required this.selectorHeight,
     required this.selectorPadding,
   }) : super(key: key);
@@ -48,7 +48,7 @@ class SelectorButton extends StatelessWidget {
     return selectorConfig.selectorType == PhoneInputSelectorType.DROPDOWN
         ? countries.isNotEmpty && countries.length > 1
             ? Container(
-                decoration: decoration,
+                decoration: selectorDecoration,
                 height: selectorHeight,
                 padding: EdgeInsets.all(selectorPadding),
                 child: DropdownButtonHideUnderline(
@@ -73,7 +73,7 @@ class SelectorButton extends StatelessWidget {
                 ),
               )
             : Container(
-                decoration: decoration,
+                decoration: selectorDecoration,
                 height: selectorHeight,
                 padding: EdgeInsets.all(selectorPadding),
                 child: Item(
@@ -103,30 +103,27 @@ class SelectorButton extends StatelessWidget {
                     }
                   }
                 : null,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: Row(
-                children: [
-                  Container(
-                    decoration: decoration,
-                    height: selectorHeight,
-                    padding: EdgeInsets.all(selectorPadding),
-                    child: Row(
-                      children: [
-                        Item(
-                          country: country,
-                          showFlag: selectorConfig.showFlags,
-                          useEmoji: selectorConfig.useEmoji,
-                          leadingPadding: selectorConfig.leadingPadding,
-                          trailingSpace: selectorConfig.trailingSpace,
-                          textStyle: selectorTextStyle,
-                        ),
-                        if (showSelectorIcon) Icon(Icons.keyboard_arrow_down_rounded),
-                      ],
-                    ),
+            child: Row(
+              children: [
+                Container(
+                  decoration: selectorDecoration,
+                  height: selectorHeight,
+                  padding: EdgeInsets.all(selectorPadding),
+                  child: Row(
+                    children: [
+                      Item(
+                        country: country,
+                        showFlag: selectorConfig.showFlags,
+                        useEmoji: selectorConfig.useEmoji,
+                        leadingPadding: selectorConfig.leadingPadding,
+                        trailingSpace: selectorConfig.trailingSpace,
+                        textStyle: selectorTextStyle,
+                      ),
+                      if (showSelectorIcon) Icon(Icons.keyboard_arrow_down_rounded),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
   }
