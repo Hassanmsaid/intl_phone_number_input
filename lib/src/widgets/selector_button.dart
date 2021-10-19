@@ -18,6 +18,11 @@ class SelectorButton extends StatelessWidget {
   final bool isEnabled;
   final bool isScrollControlled;
 
+  final bool showSelectorIcon;
+  final BoxDecoration? decoration;
+  final double selectorHeight;
+  final double selectorPadding;
+
   final ValueChanged<Country?> onCountryChanged;
 
   const SelectorButton({
@@ -32,35 +37,53 @@ class SelectorButton extends StatelessWidget {
     required this.onCountryChanged,
     required this.isEnabled,
     required this.isScrollControlled,
+    this.showSelectorIcon = false,
+    this.decoration,
+    required this.selectorHeight,
+    required this.selectorPadding,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return selectorConfig.selectorType == PhoneInputSelectorType.DROPDOWN
         ? countries.isNotEmpty && countries.length > 1
-            ? DropdownButtonHideUnderline(
-                child: DropdownButton<Country>(
-                  key: Key(TestHelper.DropdownButtonKeyValue),
-                  hint: Item(
-                    country: country,
-                    showFlag: selectorConfig.showFlags,
-                    useEmoji: selectorConfig.useEmoji,
-                    leadingPadding: selectorConfig.leadingPadding,
-                    trailingSpace: selectorConfig.trailingSpace,
-                    textStyle: selectorTextStyle,
+            ? Container(
+                decoration: decoration,
+                height: selectorHeight,
+                padding: EdgeInsets.all(selectorPadding),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton<Country>(
+                    key: Key(TestHelper.DropdownButtonKeyValue),
+                    hint: Row(
+                      children: [
+                        Item(
+                          country: country,
+                          showFlag: selectorConfig.showFlags,
+                          useEmoji: selectorConfig.useEmoji,
+                          leadingPadding: selectorConfig.leadingPadding,
+                          trailingSpace: selectorConfig.trailingSpace,
+                          textStyle: selectorTextStyle,
+                        ),
+                      ],
+                    ),
+                    value: country,
+                    items: mapCountryToDropdownItem(countries),
+                    onChanged: isEnabled ? onCountryChanged : null,
                   ),
-                  value: country,
-                  items: mapCountryToDropdownItem(countries),
-                  onChanged: isEnabled ? onCountryChanged : null,
                 ),
               )
-            : Item(
-                country: country,
-                showFlag: selectorConfig.showFlags,
-                useEmoji: selectorConfig.useEmoji,
-                leadingPadding: selectorConfig.leadingPadding,
-                trailingSpace: selectorConfig.trailingSpace,
-                textStyle: selectorTextStyle,
+            : Container(
+                decoration: decoration,
+                height: selectorHeight,
+                padding: EdgeInsets.all(selectorPadding),
+                child: Item(
+                  country: country,
+                  showFlag: selectorConfig.showFlags,
+                  useEmoji: selectorConfig.useEmoji,
+                  leadingPadding: selectorConfig.leadingPadding,
+                  trailingSpace: selectorConfig.trailingSpace,
+                  textStyle: selectorTextStyle,
+                ),
               )
         : MaterialButton(
             key: Key(TestHelper.DropdownButtonKeyValue),
@@ -69,13 +92,10 @@ class SelectorButton extends StatelessWidget {
             onPressed: countries.isNotEmpty && countries.length > 1 && isEnabled
                 ? () async {
                     Country? selected;
-                    if (selectorConfig.selectorType ==
-                        PhoneInputSelectorType.BOTTOM_SHEET) {
-                      selected = await showCountrySelectorBottomSheet(
-                          context, countries);
+                    if (selectorConfig.selectorType == PhoneInputSelectorType.BOTTOM_SHEET) {
+                      selected = await showCountrySelectorBottomSheet(context, countries);
                     } else {
-                      selected =
-                          await showCountrySelectorDialog(context, countries);
+                      selected = await showCountrySelectorDialog(context, countries);
                     }
 
                     if (selected != null) {
@@ -84,22 +104,35 @@ class SelectorButton extends StatelessWidget {
                   }
                 : null,
             child: Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Item(
-                country: country,
-                showFlag: selectorConfig.showFlags,
-                useEmoji: selectorConfig.useEmoji,
-                leadingPadding: selectorConfig.leadingPadding,
-                trailingSpace: selectorConfig.trailingSpace,
-                textStyle: selectorTextStyle,
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Row(
+                children: [
+                  Container(
+                    decoration: decoration,
+                    height: selectorHeight,
+                    padding: EdgeInsets.all(selectorPadding),
+                    child: Row(
+                      children: [
+                        Item(
+                          country: country,
+                          showFlag: selectorConfig.showFlags,
+                          useEmoji: selectorConfig.useEmoji,
+                          leadingPadding: selectorConfig.leadingPadding,
+                          trailingSpace: selectorConfig.trailingSpace,
+                          textStyle: selectorTextStyle,
+                        ),
+                        if (showSelectorIcon) Icon(Icons.keyboard_arrow_down_rounded),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           );
   }
 
   /// Converts the list [countries] to `DropdownMenuItem`
-  List<DropdownMenuItem<Country>> mapCountryToDropdownItem(
-      List<Country> countries) {
+  List<DropdownMenuItem<Country>> mapCountryToDropdownItem(List<Country> countries) {
     return countries.map((country) {
       return DropdownMenuItem<Country>(
         value: country,
@@ -150,41 +183,43 @@ class SelectorButton extends StatelessWidget {
       isScrollControlled: isScrollControlled,
       backgroundColor: Colors.transparent,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12), topRight: Radius.circular(12))),
+          borderRadius:
+              BorderRadius.only(topLeft: Radius.circular(12), topRight: Radius.circular(12))),
       builder: (BuildContext context) {
-        return Stack(children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-          ),
-          DraggableScrollableSheet(
-            builder: (BuildContext context, ScrollController controller) {
-              return Directionality(
-                textDirection: Directionality.of(inheritedContext),
-                child: Container(
-                  decoration: ShapeDecoration(
-                    color: Theme.of(context).canvasColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(12),
-                        topRight: Radius.circular(12),
+        return Stack(
+          children: [
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+            ),
+            DraggableScrollableSheet(
+              builder: (BuildContext context, ScrollController controller) {
+                return Directionality(
+                  textDirection: Directionality.of(inheritedContext),
+                  child: Container(
+                    decoration: ShapeDecoration(
+                      color: Theme.of(context).canvasColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                          topRight: Radius.circular(12),
+                        ),
                       ),
                     ),
+                    child: CountrySearchListWidget(
+                      countries,
+                      locale,
+                      searchBoxDecoration: searchBoxDecoration,
+                      scrollController: controller,
+                      showFlags: selectorConfig.showFlags,
+                      useEmoji: selectorConfig.useEmoji,
+                      autoFocus: autoFocusSearchField,
+                    ),
                   ),
-                  child: CountrySearchListWidget(
-                    countries,
-                    locale,
-                    searchBoxDecoration: searchBoxDecoration,
-                    scrollController: controller,
-                    showFlags: selectorConfig.showFlags,
-                    useEmoji: selectorConfig.useEmoji,
-                    autoFocus: autoFocusSearchField,
-                  ),
-                ),
-              );
-            },
-          ),
-        ]);
+                );
+              },
+            ),
+          ],
+        );
       },
     );
   }
